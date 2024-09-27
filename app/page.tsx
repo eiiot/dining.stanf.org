@@ -1,7 +1,5 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
 
 const diningHalls = [
   {
@@ -386,10 +384,7 @@ const getOpeningSoonDiningSlot = (diningHall: DiningHall): TimeSlot | null => {
       return false;
     }
 
-    const isTomorrow = slot.endTime.includes("am") && slot.startTime.includes("pm");
-
     const startTime = dateStringToDate(slot.startTime, false);
-    const endTime = dateStringToDate(slot.endTime, isTomorrow);
 
     return now <= startTime && now >= new Date(startTime.getTime() - 60 * 60 * 1000);
   });
@@ -412,7 +407,7 @@ export default function Home() {
 
       <div className="flex flex-col gap-4">
         {openDining.map((diningHall) => (
-          <div className="rounded border p-4 flex flex-col gap-2">
+          <div className="rounded border p-4 flex flex-col gap-2" key={diningHall.name}>
             <div className="flex flex-row justify-between">
               <h3 className="font-semibold text-base">{diningHall.name}</h3>
               <span className="text-sm text-lime-600 font-semibold text-right">
@@ -432,7 +427,7 @@ export default function Home() {
 
         {
           openingSoonDining.map((diningHall) => (
-            <div className="rounded border p-4 flex flex-col gap-2">
+            <div className="rounded border p-4 flex flex-col gap-2" key={diningHall.name}>
               <div className="flex flex-row justify-between">
                 <h3 className="font-semibold text-base">{diningHall.name}</h3>
                 <span className="text-sm text-yellow-600 font-semibold text-right">
@@ -449,7 +444,7 @@ export default function Home() {
         )}
 
         {closedDining.map((diningHall) => (
-          <div className="rounded border p-4 flex flex-col gap-2">
+          <div className="rounded border p-4 flex flex-col gap-2" key={diningHall.name}>
             <div className="flex flex-row justify-between">
               <h3 className="font-semibold text-base">{diningHall.name}</h3>
               <span className="text-sm text-red-600 font-semibold text-right">Closed</span>
