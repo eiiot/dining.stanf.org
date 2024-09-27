@@ -88,7 +88,7 @@ const diningHalls = [
         name: "Late Night",
         startTime: "9:30pm",
         endTime: "2:00am",
-        days: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
       }
     ],
   },
@@ -341,8 +341,6 @@ const dateStringToDate = (dateString: string, isTomorrow: boolean) => {
   const [hours, minutes] = dateString
     .slice(0, -2)
     .split(":");
-
-  console.log(hours, minutes, amPm);
 
   const hours24 = parseInt(hours) + (amPm === "pm" ? 12 : 0);
 
