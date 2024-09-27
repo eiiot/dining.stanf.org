@@ -22,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script defer data-domain="dining.stanf.org" src="https://analytics.eliothertenstein.com/js/script.js"></script>
+      </head>
       <body
         className={`${openSans.className} antialiased`}
       >
