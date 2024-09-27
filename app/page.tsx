@@ -3,7 +3,7 @@
 
 const diningHalls = [
   {
-    name: "Arrillaga Family Dining Commons",
+    name: "Arrillaga",
     location: {
       lat: null,
       long: null
@@ -48,7 +48,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Lakeside Dining",
+    name: "Lakeside",
     location: {
       lat: null,
       long: null
@@ -93,7 +93,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Wilbur Dining",
+    name: "Wilbur",
     location: {
       lat: null,
       long: null
@@ -132,7 +132,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Branner Dining",
+    name: "Branner",
     location: {
       lat: null,
       long: null
@@ -153,7 +153,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Stern Dining",
+    name: "Stern",
     location: {
       lat: null,
       long: null
@@ -192,7 +192,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Gerhard Casper Dining",
+    name: "Gerhard Casper",
     location: {
       lat: null,
       long: null
@@ -231,7 +231,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Florence Moore Dining",
+    name: "Florence Moore (FloMo)",
     location: {
       lat: null,
       long: null
@@ -270,7 +270,7 @@ const diningHalls = [
     ],
   },
   {
-    name: "Ricker Dining",
+    name: "Ricker",
     location: {
       lat: null,
       long: null
@@ -308,6 +308,23 @@ const diningHalls = [
       },
     ],
   },
+  {
+    name: "The Axe & Palm (TAP)*",
+    location: {
+      lat: null,
+      long: null
+    },
+    hours: [
+
+      {
+        name: "Dinner",
+        startTime: "5:00pm",
+        endTime: "2:00am",
+        days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      },
+    ],
+  },
+
 ];
 
 
@@ -448,6 +465,11 @@ export default function Home() {
               <span className="text-sm text-red-600 font-semibold text-right">Closed</span>
             </div>
           </div>))}
+      </div>
+
+
+      <div className="w-full text-center text-sm pt-4">
+        * Only accepts meal plan dollars.
       </div>
 
       <div className="w-full text-center text-sm pt-4">
