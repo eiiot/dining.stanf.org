@@ -473,7 +473,7 @@ export default function Home() {
       </div>
 
       <div className="w-full text-center text-sm pt-4">
-        stanf.org is a set of tools for stanford students. more coming soon!
+        stanf.org is a set of tools for stanford students
       </div>
     </main>
   );
