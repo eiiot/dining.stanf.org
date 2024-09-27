@@ -398,8 +398,6 @@ const getOpeningSoonDiningSlot = (diningHall: DiningHall): TimeSlot | null => {
 }
 
 export default function Home() {
-  const [filter, setFilter] = useState("");
-
   const openDining = diningHalls.filter((diningHall) => getOpenDiningSlot(diningHall) !== null);
 
   const openingSoonDining = diningHalls.filter((diningHall) => getOpeningSoonDiningSlot(diningHall) !== null);
