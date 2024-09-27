@@ -347,7 +347,7 @@ interface DiningHall {
 }
 
 
-const dateStringToDate = (dateString: string, isTomorrow: boolean) => {
+const dateStringToDate = (dateString: string, isTomorrow: boolean, isYesterday: any) => {
   // returns the time in PST (for example 11:00am PST would be 11am PST on the current day in PST)
 
 
@@ -361,7 +361,7 @@ const dateStringToDate = (dateString: string, isTomorrow: boolean) => {
 
   const hours24 = parseInt(hours) + (amPm === "pm" ? 12 : 0);
 
-  const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (isTomorrow ? 1 : 0), (hours24), parseInt(minutes));
+  const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (isTomorrow ? 1 : 0) + (isYesterday ? -1 : 0), hours24, parseInt(minutes));
 
   return date;
 }
@@ -376,10 +376,11 @@ const getOpenDiningSlot = (diningHall: DiningHall): TimeSlot | null => {
       return false;
     }
 
-    const isTomorrow = slot.endTime.includes("am") && slot.startTime.includes("pm");
+    const isEndTimeTomorrow = slot.endTime.includes("am") && slot.startTime.includes("pm");
+    const isStartYesterday = isEndTimeTomorrow && now.getHours() < 12;
 
-    const startTime = dateStringToDate(slot.startTime, false);
-    const endTime = dateStringToDate(slot.endTime, isTomorrow);
+    const startTime = dateStringToDate(slot.startTime, false, isStartYesterday);
+    const endTime = dateStringToDate(slot.endTime, isEndTimeTomorrow, isStartYesterday);
 
     return now >= startTime && now <= endTime;
   });
@@ -399,7 +400,7 @@ const getOpeningSoonDiningSlot = (diningHall: DiningHall): TimeSlot | null => {
       return false;
     }
 
-    const startTime = dateStringToDate(slot.startTime, false);
+    const startTime = dateStringToDate(slot.startTime, false, false);
 
     return now <= startTime && now >= new Date(startTime.getTime() - 60 * 60 * 1000);
   });
