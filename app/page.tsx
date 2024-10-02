@@ -20,7 +20,7 @@ interface DiningHall {
 }
 
 
-const dateStringToDate = (dateString: string, isTomorrow: boolean, isYesterday: any) => {
+const dateStringToDate = (dateString: string, isTomorrow: boolean, isYesterday: boolean) => {
   // returns the time in PST (for example 11:00am PST would be 11am PST on the current day in PST)
   const now = new Date();
 
@@ -94,10 +94,10 @@ export default function Home() {
 
       <div className="flex flex-col gap-4">
         {openDining.map((diningHall) => (
-          <div className="rounded border p-4 flex flex-col gap-2" key={diningHall.name}>
+          <div className="rounded border p-4 flex flex-col gap-2 bg-lime-700 text-white border-green-900" key={diningHall.name}>
             <div className="flex flex-row justify-between">
               <h3 className="font-semibold text-base">{diningHall.name}</h3>
-              <span className="text-sm text-lime-600 font-semibold text-right">
+              <span className="text-sm  font-semibold text-right">
                 {getOpenDiningSlot(diningHall)?.name} open until {getOpenDiningSlot(diningHall)?.endTime}
               </span>
             </div>
@@ -113,10 +113,10 @@ export default function Home() {
 
         {
           openingSoonDining.map((diningHall) => (
-            <div className="rounded border p-4 flex flex-col gap-2" key={diningHall.name}>
+            <div className="rounded border p-4 flex flex-col gap-2 bg-yellow-700 text-white border-yellow-900" key={diningHall.name}>
               <div className="flex flex-row justify-between">
                 <h3 className="font-semibold text-base">{diningHall.name}</h3>
-                <span className="text-sm text-yellow-600 font-semibold text-right">
+                <span className="text-sm font-semibold text-right">
                   {getOpeningSoonDiningSlot(diningHall)?.name} opening soon at {getOpeningSoonDiningSlot(diningHall)?.startTime}
                 </span>
               </div>
@@ -130,10 +130,10 @@ export default function Home() {
         )}
 
         {closedDining.map((diningHall) => (
-          <div className="rounded border p-4 flex flex-col gap-2" key={diningHall.name}>
+          <div className="rounded border p-4 flex flex-col gap-2 text-white bg-red-700 border-red-900" key={diningHall.name}>
             <div className="flex flex-row justify-between">
               <h3 className="font-semibold text-base">{diningHall.name}</h3>
-              <span className="text-sm text-red-600 font-semibold text-right">Closed</span>
+              <span className="text-sm font-semibold text-right">Closed</span>
             </div>
           </div>))}
       </div>
