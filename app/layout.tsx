@@ -11,7 +11,7 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: "Stanford Dining Hours",
-  description: "Which dining halls are open right now?",
+  description: "Which Stanford dining halls are open right now?",
   icons: "https://emojicdn.elk.sh/🍔"
 };
 
